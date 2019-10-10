@@ -3,7 +3,7 @@ const INIT_STATE = {
         {
           title: 'hats',
           imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-          id: 1
+          id: 1,
         },
         {
           title: 'jackets',
