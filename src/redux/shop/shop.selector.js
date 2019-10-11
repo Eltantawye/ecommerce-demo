@@ -1,12 +1,6 @@
 import { createSelector } from 'reselect';
 
-const COLLECTION_ID_MAP = {
-    hats: 1,
-    sneakers: 2,
-    jackets: 3,
-    womens: 4,
-    mens: 5
-}
+
 const selectShop = state => state.shop;
 
 export const selectShopData = createSelector(
@@ -14,8 +8,14 @@ export const selectShopData = createSelector(
     shop => shop.collections
 )
 
+// collection overview page needs array instead of obj 
+export const selectCollectionOverview = createSelector(
+    [selectShopData], 
+    collections => Object.keys(collections).map(key => collections[key])
+)
+
 export const selectCollection = collectionParam => createSelector(
     [selectShopData],
-    collection => collection.find(collection => collection.id === COLLECTION_ID_MAP[collectionParam] )
+    collection => collection[collectionParam] 
 )
 
