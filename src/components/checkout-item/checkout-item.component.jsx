@@ -2,7 +2,6 @@ import React from 'react';
 import { clearItemFromCart, addItem, removeItem } from '../../redux/cart/cart.actions';
 import { connect } from 'react-redux'
 import './checkout-item.styles.scss'
-import { dispatch } from '../../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/rxjs/internal/observable/pairs';
 import cartItems from '../cart-item/cart-item.component';
 
 const CheckoutItem = ({cartItem ,clearItem, addItem, removeItem}) => {
