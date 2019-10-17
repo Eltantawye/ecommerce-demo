@@ -2,24 +2,26 @@ import React from 'react';
 import CollectionItem from '../../components/collection-item/collection-item.component'
 import { connect } from 'react-redux';
 import { selectCollection } from '../../redux/shop/shop.selector';
-import './collection.styles.scss';
 
+import {
+    CollectionPageContainer,
+    CollectionTitle,
+    CollectionItemsContainer
+  } from './collection.styles';
+  
 const CollectionPage = ({collection}) => {
-    console.log("COLLECCCE",collection);
     const {title, items} = collection;
 
-    return(
-    <div className='collection-page'>
-        <h1 className='title'>{title}</h1>
-        <div className='items'>
-            {
-                items.map(item => (
-                    <CollectionItem key={item.id} item={item} />
-                ))
-            }
-        </div>
-    </div>  
-    )
+    return (
+        <CollectionPageContainer>
+          <CollectionTitle>{title}</CollectionTitle>
+          <CollectionItemsContainer>
+            {items.map(item => (
+              <CollectionItem key={item.id} item={item} />
+            ))}
+          </CollectionItemsContainer>
+        </CollectionPageContainer>
+      );
     }
 
 //we will leverage the second para , ownProps : is the component props

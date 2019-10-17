@@ -8,34 +8,34 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selector';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { createStructuredSelector } from 'reselect';
-import './header.styles.scss';
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv} from './header.styles'
 
 
 const Header = ({currentUser,hidden,ToggleCart}) => (
-    <div className='header'>
-        <Link className="logo-continer" to="/">
+    <HeaderContainer>
+        <LogoContainer to="/">
             <Logo className="logo" />
-        </Link>
-        <div className="options">
-            <Link to="/shop" className="option">
+        </LogoContainer>
+        <OptionsContainer>
+            <OptionLink to="/shop" >
                 SHOP
-            </Link>
-            <Link to="/contact" className="option">
+            </OptionLink>
+            <OptionLink to="/contact">
                 CONTACT
-            </Link>
+            </OptionLink>
 
             {currentUser ? 
-            <div className="option" onClick={()=>auth.signOut()}>
+            <OptionLink as='div' onClick={()=>auth.signOut()}>
                 SIGN OUT
-            </div>
+            </OptionLink>
             :
-            <Link to="/signin" className="option">
+            <OptionLink to="/signin">
                 SIGN IN
-            </Link>}
+            </OptionLink>}
             <CartIcon />
-        </div>
+        </OptionsContainer>
        {!hidden?<CartDropdown  /> : null}
-    </div>
+    </HeaderContainer>
 )
 //createStructuredSelector will pass the top level state
 const mapStateToProps = createStructuredSelector({
